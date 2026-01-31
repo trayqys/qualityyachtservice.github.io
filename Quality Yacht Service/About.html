@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Quality Yacht Services - Nassau, Bahamas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a2a5e;
+            --secondary: #1a6bb3;
+            --accent: #f8c51a;
+            --light: #f0f6ff;
+            --dark: #051835;
+            --text: #333333;
+            --text-light: #777777;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color:(white);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color:(white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #e0b018;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: fixed;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* About Hero */
+        .about-hero {
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(5, 24, 53, 0.8), rgba(5, 24, 53, 0.8)), url('https://images.unsplash.com/photo-1500214439798-ef148e7b476e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Founder Section */
+        .founder-section {
+            background-color: var(--white);
+        }
+
+        .founder-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .founder-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .founder-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .founder-content {
+            flex: 1;
+        }
+
+        .founder-content h2 {
+            text-align: left;
+        }
+
+        .founder-content h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        .founder-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            background-color: var(--light);
+            text-align: center;
+        }
+
+        .mission-box {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 60px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 5px solid var(--secondary);
+        }
+
+        .mission-box h2 {
+            margin-bottom: 30px;
+        }
+
+        .mission-statement {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+
+        /* Values Section */
+        .values-section {
+            background-color: var(--white);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: var(--light);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .value-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-section {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .why-choose-section h2 {
+            color: var(--white);
+        }
+
+        .why-choose-section h2:after {
+            background-color: var(--accent);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .advantage-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .advantage-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* Team Gallery */
+        .team-gallery {
+            background-color: var(--light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .team-image img {
+            transform: scale(1.05);
+        }
+
+        .team-info {
+            padding: 25px;
+        }
+
+        .team-info h3 {
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* CTA Section */
+        .about-cta {
+            background-color: var(--secondary);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .about-cta h2 {
+            color: var(--white);
+        }
+
+        .about-cta h2:after {
+            background-color: var(--accent);
+        }
+
+        .about-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-column i {
+            margin-right: 10px;
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .founder-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .founder-content h2 {
+                text-align: center;
+            }
+            
+            .founder-content h2:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .about-hero {
+                height: 50vh;
+                min-height: 400px;
+                margin-top: 70px;
+            }
+            
+            .mission-box {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 80px 30px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px 0;
+            }
+            
+            .values-grid, .advantages-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .about-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .mission-box {
+                padding: 30px 20px;
+            }
+            
+            .mission-statement {
+                font-size: 1.1rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+      <header id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Quality<span>Yacht</span>Services</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Contact.html">Charters</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Built on Quality, Driven by Passion</h1>
+                <p>Meet the team behind Quality Yacht Services and learn about our commitment to excellence in yacht care throughout Nassau and the Bahamas.</p>
+                <a href="#founder" class="btn btn-primary">Meet Our Founder</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section" id="founder">
+        <div class="container">
+            <div class="founder-container">
+                <div class="founder-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tray Curry, Founder of Quality Yacht Services">
+                </div>
+                <div class="founder-content">
+                    <h2>Meet Tray Curry</h2>
+                    <p><strong>Founder & Lead Technician</strong></p>
+                    <p>Tray Curry, a lifelong boating enthusiast and Abaco native, founded Quality Yacht Services to fill a gap in the local market: reliable, mobile, and professional yacht care.</p>
+                    <p>Growing up around the waters of the Bahamas, Tray developed a deep appreciation for marine vessels and their maintenance needs. After years working in marine services and recognizing the challenges yacht owners faced finding consistent, high-quality care, he decided to create a service that puts the client first.</p>
+                    <p>With years of hands-on experience and a commitment to excellence, Tray ensures every vessel receives the attention it deserves. He personally oversees many of the services and maintains direct relationships with clients, ensuring consistent quality and accountability.</p>
+                    <div class="founder-quote">
+                        "Your yacht deserves the same care and attention you give it. We're not just cleaning boats—we're preserving investments and ensuring memorable experiences on the water."
+                    </div>
+                    <a href="" class="btn btn-primary">Contact Tray Directly</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-box">
+                <h2>Our Mission</h2>
+                <div class="mission-statement">
+                    To provide professional, reliable, and high-quality yacht maintenance and detailing services, ensuring clients' vessels remain pristine, protected, and performing well.
+                </div>
+                <p>We believe that exceptional yacht care shouldn't be complicated or inconvenient. That's why we bring our expertise directly to your dock, using premium products and proven techniques to maintain and enhance your vessel's value and appearance.</p>
+                <p>Whether you're a private owner, charter company, or marina manager, we're committed to being your trusted partner for all yacht maintenance needs in the Bahamas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2>Our Core Values</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">These principles guide everything we do at Quality Yacht Services</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Quality First</h3>
+                    <p>We never compromise on the quality of our work or products. Every service meets our exacting standards.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Reliability</h3>
+                    <p>We show up on time, deliver what we promise, and stand behind our work with a satisfaction guarantee.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Customer Trust</h3>
+                    <p>We build lasting relationships through transparency, clear communication, and consistent performance.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Environmental Care</h3>
+                    <p>We use eco-friendly products where possible and follow best practices to protect our beautiful Bahamian waters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <h2>Why Choose Quality Yacht Services?</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; color: rgba(255, 255, 255, 0.9);">Our competitive advantages that set us apart in the Nassau yacht care market</p>
+            
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-truck-moving"></i>
+                    </div>
+                    <h3>Mobile Service</h3>
+                    <p>We come directly to your dock—no need to move your yacht. Save time and hassle with our on-site services.</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Transparent Pricing</h3>
+                    <p>Clear quotes with no hidden fees. We explain costs upfront so you know exactly what to expect.</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Local Expertise</h3>
+                    <p>Deep knowledge of Bahamas waters, marinas, and the unique challenges of marine maintenance in our climate.</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Flexible Scheduling</h3>
+                    <p>We work around your schedule, including weekends, to minimize disruption to your boating experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Gallery -->
+    <section class="team-gallery">
+        <div class="container">
+            <h2>Our Team in Action</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Meet the dedicated professionals who bring quality yacht care to your dock</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1594489428504-5c0c480c8d2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Tray performing hull inspection">
+                    </div>
+                    <div class="team-info">
+                        <h3>Tray Curry</h3>
+                        <div class="team-role">Founder & Lead Technician</div>
+                        <p>Personally overseeing hull inspection and cleaning services at Paradise Island Marina.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2035&q=80" alt="Teak restoration work">
+                    </div>
+                    <div class="team-info">
+                        <h3>Anfernee Ferguson</h3>
+                        <div class="team-role">Detailing Specialist</div>
+                        <p>Applying premium teak sealant during a restoration project at Lyford Cay.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Exterior detailing work">
+                    </div>
+                    <div class="team-info">
+                        <h3>Trisha</h3>
+                        <div class="team-role">Interior Detailing Expert</div>
+                        <p>Performing precision wax application on a 65ft motor yacht in Nassau.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1545147986-466375c3a2b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Dive team member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Alex Hall</h3>
+                        <div class="team-role">Certified Dive Technician</div>
+                        <p>Performing underwater hull inspection and cleaning with eco-friendly methods.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-cta">
+        <div class="container">
+            <h2>Experience the Difference of Owner-Operated Care</h2>
+            <p>When you choose Quality Yacht Services, you're not just hiring a company—you're partnering with a team that truly cares about your vessel. With Tray Curry's personal oversight and our commitment to excellence, your yacht receives the attention it deserves.</p>
+            <a href="index.html#contact" class="btn btn-primary">Meet Your Yacht Care Expert</a>
+            <a href="services.html" class="btn btn-secondary" style="margin-left: 20px;">View Our Services</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> (242) 551-4171</p>
+                    <p><i class="fas fa-envelope"></i> info@qualityyachtservices.com</p>
+                    <p><i class="fab fa-whatsapp"></i> (242) 551-4171 (WhatsApp)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Serving Nassau, Bahamas & surrounding areas</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="About.html"><i class="fas fa-chevron-right"></i> About Us</a>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="Blog.html"><i class="fas fa-chevron-right"></i> Blog</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Charter</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ready to Book?</h3>
+                    <p>Schedule your yacht service online or contact us directly for a custom quote.</p>
+                    <a href="services.html#booking" onclick="scrollToBookingWidget()" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Quality Yacht Services. All rights reserved. | Founded by Tray Curry | Nassau, Bahamas</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 1s forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe value cards and advantage cards
+        document.querySelectorAll('.value-card, .advantage-card, .team-member').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

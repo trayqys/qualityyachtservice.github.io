@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Luxury Getaway | Quality Yacht Service</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2a6496;
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: #2a6496;
+    }
+    
+    .book-now-link {
+      background-color: #FF6B6B;
+      color: white !important;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: 2px solid #FF6B6B;
+    }
+    
+    .book-now-link:hover {
+      background-color: transparent;
+      color: #FF6B6B !important;
+    }
+    
+    /* Hero Section */
+    .destinations-hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/bahamas-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
+    
+    .destinations-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .destinations-hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* Destinations Grid */
+    .destinations {
+      padding: 80px 0;
+    }
+    
+    .destinations h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #2a6496;
+    }
+    
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
+    
+    .destination-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%;
+      max-width: 350px;
+    }
+    
+    .destination-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .destination-image {
+      height: 250px;
+      overflow: hidden;
+    }
+    
+    .destination-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .destination-card:hover .destination-image img {
+      transform: scale(1.1);
+    }
+    
+    .destination-info {
+      padding: 25px;
+      background: white;
+      height: calc(100% - 300px);
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .destination-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #2a6496;
+    }
+    
+    .destination-info p {
+      margin-bottom: 20px;
+      color: #666;
+      flex-grow: 1;
+    }
+    
+    .destination-features {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    
+    .destination-features li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      list-style-type: none;
+    }
+    
+    .destination-features i {
+      color: #4CAF50;
+      margin-right: 10px;
+    }
+    
+    .book-now {
+      display: inline-block;
+      background-color: #FF6B6B;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: 2px solid #FF6B6B;
+      text-align: center;
+      margin-top: auto;
+    }
+    
+    .book-now:hover {
+      background-color: transparent;
+      color: #FF6B6B;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #2a6496;
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .footer-section a {
+      color: #ddd;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+    
+    .footer-section a:hover {
+      color: white;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 1.2rem;
+      color: white;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+      }
+      
+      .nav-links {
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav-links li {
+        margin: 10px 15px;
+      }
+      
+      .destinations-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .destinations-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .destination-card {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">Quality Yacht Service</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Destination.html">Destination</a></li>
+          <li><a href="#">Rentals</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="book.html" class="book-now-link">Book Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="destinations-hero">
+    <div class="container">
+      <h1>Discover Bahamas Paradise</h1>
+      <p>Explore our handpicked collection of breathtaking Bahamian destinations, each offering unique experiences and unforgettable memories.</p>
+    </div>
+  </section>
+
+  <!-- Destinations Section -->
+  <section class="destinations">
+    <div class="container">
+      <h2>Our Featured Destinations</h2>
+      <div class="destinations-grid">
+        <!-- Nassau -->
+        <div class="destination-card">
+          <div class="destination-image">
+            <img src="images/Rose-Island.jpeg" alt="Nassau, Bahamas">
+          </div>
+          <div class="destination-info">
+            <h3>Nassau</h3>
+            <p>The vibrant capital of the Bahamas, known for its colonial architecture, stunning beaches, and vibrant culture.</p>
+            <ul class="destination-features">
+              <li><i class="fas fa-check"></i> Historic downtown area</li>
+              <li><i class="fas fa-check"></i> World-class resorts</li>
+              <li><i class="fas fa-check"></i> Excellent shopping & dining</li>
+            </ul>
+            <a href="Booking.html" class="book-now">Book Now</a>
+          </div>
+        </div>
+
+        <!-- Exuma -->
+        <div class="destination-card">
+          <div class="destination-image">
+            <img src="images/Plane.jpeg" alt="Exuma, Bahamas">
+          </div>
+          <div class="destination-info">
+            <h3>Exuma</h3>
+            <p>Famous for its 365 cays, swimming pigs, and some of the most beautiful waters in the world.</p>
+            <ul class="destination-features">
+              <li><i class="fas fa-check"></i> Swimming with pigs</li>
+              <li><i class="fas fa-check"></i> Thunderball Grotto</li>
+              <li><i class="fas fa-check"></i> Pristine sandbars</li>
+            </ul>
+            <a href="book.html?destination=exuma" class="book-now">Book Now</a>
+          </div>
+        </div>
+
+        <!-- Eleuthera -->
+        <div class="destination-card">
+          <div class="destination-image">
+            <img src="images/eleuthera.jpg" alt="Eleuthera, Bahamas">
+          </div>
+          <div class="destination-info">
+            <h3>Eleuthera</h3>
+            <p>A peaceful retreat with pink sand beaches, glass window bridge, and pineapple plantations.</p>
+            <ul class="destination-features">
+              <li><i class="fas fa-check"></i> Pink Sand Beach</li>
+              <li><i class="fas fa-check"></i> Glass Window Bridge</li>
+              <li><i class="fas fa-check"></i> Secluded coves</li>
+            </ul>
+            <a href="book.html?destination=eleuthera" class="book-now">Book Now</a>
+          </div>
+        </div>
+
+        <!-- Harbour Island -->
+        <div class="destination-card">
+          <div class="destination-image">
+            <img src="images/harbour-island.jpg" alt="Harbour Island, Bahamas">
+          </div>
+          <div class="destination-info">
+            <h3>Harbour Island</h3>
+            <p>Charming island known for its pastel-colored houses and famous pink sand beaches.</p>
+            <ul class="destination-features">
+              <li><i class="fas fa-check"></i> Pink Sand Beach</li>
+              <li><i class="fas fa-check"></i> Golf cart transportation</li>
+              <li><i class="fas fa-check"></i> Boutique hotels</li>
+            </ul>
+            <a href="book.html?destination=harbour-island" class="book-now">Book Now</a>
+          </div>
+        </div>
+
+        <!-- Andros -->
+        <div class="destination-card">
+          <div class="destination-image">
+            <img src="images/andros.jpg" alt="Andros, Bahamas">
+          </div>
+          <div class="destination-info">
+            <h3>Andros</h3>
+            <p>The largest island in the Bahamas, offering world-class bonefishing and the third largest barrier reef.</p>
+            <ul class="destination-features">
+              <li><i class="fas fa-check"></i> Blue Holes National Park</li>
+              <li><i class="fas fa-check"></i> Excellent diving & fishing</li>
+              <li><i class="fas fa-check"></i> Eco-tourism paradise</li>
+            </ul>
+            <a href="book.html?destination=andros" class="book-now">Book Now</a>
+          </div>
+        </div>
+
+        <!-- Bimini -->
+        <div class="destination-card">
+          <div class="destination-image">
+            <img src="images/bimini.jpg" alt="Bimini, Bahamas">
+          </div>
+          <div class="destination-info">
+            <h3>Bimini</h3>
+            <p>Closest Bahamian islands to the US, known for big game fishing and Hemingway's legacy.</p>
+            <ul class="destination-features">
+              <li><i class="fas fa-check"></i> Big game fishing capital</li>
+              <li><i class="fas fa-check"></i> Bimini Road mystery</li>
+              <li><i class="fas fa-check"></i> Dolphin encounters</li>
+            </ul>
+            <a href="book.html?destination=bimini" class="book-now">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <a href="index.html">Home</a>
+          <a href="destinations.html">Destinations</a>
+          <a href="tours.html">Tours</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <a href="tel:+12425514171"><i class="fas fa-phone"></i> +1 (242) 551-4171</a>
+          <a href="mailto:info@luxurytropical.com"><i class="fas fa-envelope"></i> info@luxurytropical.com</a>
+          <a href="#"><i class="fas fa-map-marker-alt"></i> Nassau, Bahamas</a>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Luxury Tropical Getaways. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

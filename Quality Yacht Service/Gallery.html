@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work | Quality Yacht Services Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery-bundle.min.css" />
+    <style>
+        :root {
+            --primary: #0a2a5e;
+            --secondary: #1a6bb3;
+            --accent: #f8c51a;
+            --light: #f0f6ff;
+            --dark: #051835;
+            --text: #333333;
+            --text-light: #777777;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #e0b018;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: fixed;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Gallery Hero */
+        .gallery-hero {
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(5, 24, 53, 0.8), rgba(5, 24, 53, 0.8)), url('https://images.unsplash.com/photo-1500214439798-ef148e7b476e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .gallery-hero h1 {
+            font-size: 3rem;
+        }
+
+        .gallery-hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Gallery Categories */
+        .gallery-categories {
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .category-tab {
+            padding: 12px 24px;
+            background-color: var(--white);
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .category-tab:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .category-tab.active {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: var(--white);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background-color: var(--white);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            padding: 20px;
+        }
+
+        .gallery-caption h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .gallery-caption p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Before/After Comparison */
+        .comparison-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .comparison-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .before-image {
+            z-index: 1;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        }
+
+        .after-image {
+            z-index: 2;
+        }
+
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent);
+            z-index: 3;
+            transform: translateX(-50%);
+            cursor: col-resize;
+        }
+
+        .comparison-slider:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comparison-slider:after {
+            content: '↔';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .comparison-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .comparison-label {
+            padding: 5px 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .label-before {
+            background-color: #666;
+        }
+
+        .label-after {
+            background-color: var(--secondary);
+        }
+
+        /* Video Gallery */
+        .video-gallery {
+            background-color: var(--white);
+            padding: 60px 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .video-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(248, 197, 26, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .video-item:hover .play-button {
+            background-color: var(--accent);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-caption {
+            padding: 20px;
+            background-color: var(--white);
+        }
+
+        /* Client Yachts */
+        .client-yachts {
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+
+        .client-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .client-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .client-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .client-logo {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: var(--white);
+            border-bottom: 1px solid #eee;
+        }
+
+        .client-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .client-info {
+            padding: 20px;
+        }
+
+        /* CTA Section */
+        .gallery-cta {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .gallery-cta h2 {
+            color: var(--white);
+        }
+
+        .gallery-cta h2:after {
+            background-color: var(--accent);
+        }
+
+        .gallery-cta p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-column i {
+            margin-right: 10px;
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .lightbox-caption {
+            color: var(--white);
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-nav-btn {
+            color: var(--white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            background: none;
+            border: none;
+        }
+
+        .lightbox-nav-btn:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .gallery-hero {
+                height: 50vh;
+                min-height: 400px;
+                margin-top: 70px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 80px 30px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px 0;
+            }
+            
+            .category-tabs {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+            }
+            
+            .category-tab {
+                white-space: nowrap;
+            }
+            
+            .comparison-container {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .gallery-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid, .client-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Quality<span>Yacht</span>Services</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="index.html#why-us">Why Us</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Work</h1>
+                <p>Before & After Transformations</p>
+                <p>Explore our portfolio of yacht detailing and maintenance projects. See firsthand how our expert services transform vessels in Nassau and the surrounding Bahamas.</p>
+                <a href="#gallery" class="btn btn-primary">View Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Categories -->
+    <section class="gallery-categories" id="gallery">
+        <div class="container">
+            <h2>Our Portfolio</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Browse our work by service category. Click on any image to view larger version.</p>
+            
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="all">All Work</div>
+                <div class="category-tab" data-category="exterior">Exterior Detailing</div>
+                <div class="category-tab" data-category="interior">Interior Cleaning</div>
+                <div class="category-tab" data-category="teak">Teak Restoration</div>
+                <div class="category-tab" data-category="hull">Hull Cleaning</div>
+                <div class="category-tab" data-category="delivery">Yacht Delivery</div>
+                <div class="category-tab" data-category="client">Client Yachts</div>
+            </div>
+
+            <!-- Exterior Detailing Gallery -->
+            <div class="gallery-category active" id="exterior-gallery">
+                <h3 style="text-align: left; margin-bottom: 30px;">Exterior Detailing Transformations</h3>
+                
+                <div class="gallery-grid">
+                    <!-- Before/After Comparison 1 -->
+                    <div class="gallery-item" data-category="exterior">
+                        <div class="comparison-container" id="comparison1">
+                            <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2012&q=80" alt="Dirty yacht hull" class="comparison-image before-image">
+                            <img src="https://images.unsplash.com/photo-1581791533173-0d4c69c94a9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Clean yacht hull" class="comparison-image after-image">
+                            <div class="comparison-slider" data-comparison="comparison1"></div>
+                        </div>
+                        <div class="comparison-labels">
+                            <span class="comparison-label label-before">Before</span>
+                            <span class="comparison-label label-after">After</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>58ft Motor Yacht – Exterior Detail & Wax</h3>
+                            <p>Complete exterior wash, wax, and polish restoration at Nassau Marina</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Before/After Comparison 2 -->
+                    <div class="gallery-item" data-category="exterior">
+                        <div class="comparison-container" id="comparison2">
+                            <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Dull fiberglass" class="comparison-image before-image">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Glossy finish" class="comparison-image after-image">
+                            <div class="comparison-slider" data-comparison="comparison2"></div>
+                        </div>
+                        <div class="comparison-labels">
+                            <span class="comparison-label label-before">Before</span>
+                            <span class="comparison-label label-after">After</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>45ft Sailing Yacht – Hull Polish & Wax</h3>
+                            <p>Oxidation removal and ceramic coating application</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Regular Image -->
+                    <div class="gallery-item" data-category="exterior">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Yacht exterior detailing" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>72ft Luxury Yacht – Full Exterior Detail</h3>
+                            <p>Complete exterior service including stainless steel polish and window cleaning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interior Cleaning Gallery -->
+            <div class="gallery-category" id="interior-gallery">
+                <h3 style="text-align: left; margin-bottom: 30px;">Interior Cleaning Transformations</h3>
+                
+                <div class="gallery-grid">
+                    <!-- Before/After Comparison -->
+                    <div class="gallery-item" data-category="interior">
+                        <div class="comparison-container" id="comparison3">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80" alt="Messy cabin" class="comparison-image before-image">
+                            <img src="https://images.unsplash.com/photo-1544551763-77efc0c3f0c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Organized cabin" class="comparison-image after-image">
+                            <div class="comparison-slider" data-comparison="comparison3"></div>
+                        </div>
+                        <div class="comparison-labels">
+                            <span class="comparison-label label-before">Before</span>
+                            <span class="comparison-label label-after">After</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Master Cabin Deep Clean & Organization</h3>
+                            <p>Post-charter cleaning and complete cabin reorganization</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Regular Image -->
+                    <div class="gallery-item" data-category="interior">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1599643478512-16dbe8b6a5e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80" alt="Clean yacht galley" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Galley Deep Cleaning & Degreasing</h3>
+                            <p>Complete galley sanitization including appliances and surfaces</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Regular Image -->
+                    <div class="gallery-item" data-category="interior">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Yacht interior" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Salon Area Deep Clean</h3>
+                            <p>Upholstery treatment and complete interior detailing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teak Restoration Gallery -->
+            <div class="gallery-category" id="teak-gallery">
+                <h3 style="text-align: left; margin-bottom: 30px;">Teak Restoration Projects</h3>
+                
+                <div class="gallery-grid">
+                    <!-- Before/After Comparison -->
+                    <div class="gallery-item" data-category="teak">
+                        <div class="comparison-container" id="comparison4">
+                            <img src="https://images.unsplash.com/photo-1500214439798-ef148e7b476e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gray weathered teak" class="comparison-image before-image">
+                            <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa3f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Rich sealed teak" class="comparison-image after-image">
+                            <div class="comparison-slider" data-comparison="comparison4"></div>
+                        </div>
+                        <div class="comparison-labels">
+                            <span class="comparison-label label-before">Before</span>
+                            <span class="comparison-label label-after">After</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Teak Deck Restoration – Lyford Cay Marina</h3>
+                            <p>Complete teak cleaning, brightening, and sealing treatment</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Regular Images -->
+                    <div class="gallery-item" data-category="teak">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Teak deck after restoration" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Custom Yacht Teak Care</h3>
+                            <p>Teak cleaning and UV-protective sealant application</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="teak">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1578645510447-e5db4711c356?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Teak detailing" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Teak Cockpit Restoration</h3>
+                            <p>Specialized teak treatment for high-traffic cockpit area</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hull Cleaning Gallery -->
+            <div class="gallery-category" id="hull-gallery">
+                <h3 style="text-align: left; margin-bottom: 30px;">Hull Cleaning & Dive Services</h3>
+                
+                <div class="gallery-grid">
+                    <!-- Before/After Comparison -->
+                    <div class="gallery-item" data-category="hull">
+                        <div class="comparison-container" id="comparison5">
+                            <img src="https://images.unsplash.com/photo-1592859600970-06891b8e5b0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Barnacle buildup" class="comparison-image before-image">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Smooth hull" class="comparison-image after-image">
+                            <div class="comparison-slider" data-comparison="comparison5"></div>
+                        </div>
+                        <div class="comparison-labels">
+                            <span class="comparison-label label-before">Before</span>
+                            <span class="comparison-label label-after">After</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Hull Cleaning & Barnacle Removal</h3>
+                            <p>Underwater hull cleaning and propeller polishing at Paradise Island Marina</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Regular Images -->
+                    <div class="gallery-item" data-category="hull">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1545147986-466375c3a2b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Diver cleaning hull" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Underwater Hull Inspection</h3>
+                            <p>Certified diver performing hull inspection and through-hull fitting check</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="hull">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Clean yacht hull" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Post-Cleaning Hull Inspection</h3>
+                            <p>Smooth, clean hull ready for optimal performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yacht Delivery Gallery -->
+            <div class="gallery-category" id="delivery-gallery">
+                <h3 style="text-align: left; margin-bottom: 30px;">Yacht Delivery & Captain Services</h3>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="delivery">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Yacht underway" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Yacht Underway – Nassau to Lyford Cay</h3>
+                            <p>Professional local yacht delivery service</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="delivery">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1500214439798-ef148e7b476e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Yacht docking" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>Marina Maneuver Assistance</h3>
+                            <p>Captain service for precise docking in tight marina spaces</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="delivery">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1578645510447-e5db4711c356?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Captain at helm" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>On-Water Supervision</h3>
+                            <p>Licensed captain providing supervision and assistance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Client Yachts Gallery -->
+            <div class="gallery-category" id="client-gallery">
+                <h3 style="text-align: left; margin-bottom: 30px;">Client Yachts We've Serviced</h3>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="client">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury motor yacht" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>78ft Sunseeker Motor Yacht</h3>
+                            <p>Regular monthly maintenance plan client since 2021</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="client">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa3f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sailing yacht" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>52ft Beneteau Sailing Yacht</h3>
+                            <p>Complete exterior and interior detailing for charter company</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="client">
+                        <div class="gallery-image-container">
+                            <img src="https://images.unsplash.com/photo-1578645510447-e5db4711c356?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Catamaran" class="gallery-image">
+                        </div>
+                        <div class="gallery-caption">
+                            <h3>48ft Lagoon Catamaran</h3>
+                            <p>Hull cleaning and teak restoration for private owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery -->
+    <section class="video-gallery">
+        <div class="container">
+            <h2>Video Showcase</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Watch our team in action with these short clips of our yacht maintenance services.</p>
+            
+            <!-- Featured Video -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/6T9Ia_2rs1U?rel=0&modestbranding=1" title="Yacht Detailing Process" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/6T9Ia_2rs1U/maxresdefault.jpg" alt="Hull cleaning video">
+                        <div class="play-button" data-video="6T9Ia_2rs1U">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <h3>Underwater Hull Cleaning</h3>
+                        <p>Watch our certified diver clean a yacht hull in Nassau waters</p>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/9HkM9Kjk1sk/maxresdefault.jpg" alt="Teak restoration video">
+                        <div class="play-button" data-video="9HkM9Kjk1sk">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <h3>Teak Deck Restoration Process</h3>
+                        <p>Step-by-step teak cleaning and sealing demonstration</p>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/m7oKSPqohq8/maxresdefault.jpg" alt="Exterior detailing video">
+                        <div class="play-button" data-video="m7oKSPqohq8">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <h3>Exterior Detailing & Waxing</h3>
+                        <p>Complete exterior wash and wax process on a 60ft motor yacht</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Yachts Section -->
+    <section class="client-yachts">
+        <div class="container">
+            <h2>Our Valued Clients</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">We're proud to serve yacht owners and charter companies throughout the Bahamas.</p>
+            
+            <div class="client-grid">
+                <div class="client-card">
+                    <div class="client-logo">
+                        <!-- Placeholder for client logo -->
+                        <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); font-weight: 700;">Bahamas Yacht Charters</div>
+                    </div>
+                    <div class="client-info">
+                        <p>"Quality Yacht Services maintains our entire fleet of 12 charter yachts. Their monthly plans keep our vessels in perfect condition for guests."</p>
+                        <p><strong>Service:</strong> Monthly Maintenance Plans</p>
+                    </div>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <!-- Placeholder for client logo -->
+                        <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); font-weight: 700;">Lyford Cay Marina</div>
+                    </div>
+                    <div class="client-info">
+                        <p>"Recommended provider for our marina clients. Professional, reliable, and exceptional work every time."</p>
+                        <p><strong>Service:</strong> Full Range of Detailing Services</p>
+                    </div>
+                </div>
+                
+                <div class="client-card">
+                    <div class="client-logo">
+                        <!-- Placeholder for client logo -->
+                        <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); font-weight: 700;">Private Owner - 78ft Sunseeker</div>
+                    </div>
+                    <div class="client-info">
+                        <p>"Tray and his team have cared for my yacht for 3 years. Their attention to detail is unmatched in Nassau."</p>
+                        <p><strong>Service:</strong> Ultimate Care Plan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gallery-cta">
+        <div class="container">
+            <h2>Ready to Transform Your Yacht?</h2>
+            <p>See what we can do for your vessel. Contact us today to schedule a service or request a quote.</p>
+            <a href="services.html#booking" class="btn btn-primary">Book Your Service</a>
+            <a href="index.html#contact" class="btn btn-secondary" style="margin-left: 20px;">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quality Yacht Services</h3>
+                    <p>Premium mobile yacht detailing and maintenance services delivered directly to your dock in Nassau, Bahamas.</p>
+                    <p>Founded and operated by Tray Curry with a commitment to excellence and customer satisfaction.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> (242) 555-YACHT (9224)</p>
+                    <p><i class="fas fa-envelope"></i> info@qualityyachtservices.com</p>
+                    <p><i class="fab fa-whatsapp"></i> (242) 555-9224 (WhatsApp)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Serving Nassau, Bahamas & surrounding areas</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a>
+                    <a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact & Booking</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ready to Book?</h3>
+                    <p>Schedule your yacht service online or contact us directly for a custom quote.</p>
+                    <a href="#booking" class="btn btn-primary" style="margin-top: 15px;">Book Service Now</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Quality Yacht Services. All rights reserved. | Founded by Tray Curry | Nassau, Bahamas</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <div class="lightbox-nav">
+            <button class="lightbox-nav-btn" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-nav-btn" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/lightgallery.min.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Gallery Category Filtering
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const galleryCategories = document.querySelectorAll('.gallery-category');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        // Show all gallery items by default
+        galleryCategories[0].classList.add('active');
+        
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Hide all gallery categories
+                galleryCategories.forEach(cat => {
+                    cat.classList.remove('active');
+                });
+                
+                // Show selected category or all
+                if (category === 'all') {
+                    galleryCategories.forEach(cat => cat.classList.add('active'));
+                } else {
+                    document.getElementById(`${category}-gallery`).classList.add('active');
+                }
+                
+                // Scroll to gallery section
+                document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        
+        // Before/After Comparison Sliders
+        const comparisonSliders = document.querySelectorAll('.comparison-slider');
+        
+        comparisonSliders.forEach(slider => {
+            slider.addEventListener('mousedown', startDrag);
+            slider.addEventListener('touchstart', startDrag);
+            
+            function startDrag(e) {
+                e.preventDefault();
+                const container = document.getElementById(slider.getAttribute('data-comparison'));
+                const beforeImage = container.querySelector('.before-image');
+                
+                document.addEventListener('mousemove', drag);
+                document.addEventListener('touchmove', drag);
+                document.addEventListener('mouseup', stopDrag);
+                document.addEventListener('touchend', stopDrag);
+                
+                function drag(e) {
+                    let xPos = 0;
+                    
+                    if (e.type.includes('mouse')) {
+                        xPos = e.clientX - container.getBoundingClientRect().left;
+                    } else {
+                        xPos = e.touches[0].clientX - container.getBoundingClientRect().left;
+                    }
+                    
+                    // Constrain xPos to container bounds
+                    xPos = Math.max(0, Math.min(xPos, container.offsetWidth));
+                    
+                    // Update slider position
+                    slider.style.left = `${xPos}px`;
+                    
+                    // Update before image clip path
+                    const percent = (xPos / container.offsetWidth) * 100;
+                    beforeImage.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+                }
+                
+                function stopDrag() {
+                    document.removeEventListener('mousemove', drag);
+                    document.removeEventListener('touchmove', drag);
+                    document.removeEventListener('mouseup', stopDrag);
+                    document.removeEventListener('touchend', stopDrag);
+                }
+            }
+        });
+        
+        // Video Play Functionality
+        const playButtons = document.querySelectorAll('.play-button');
+        const featuredVideo = document.querySelector('.video-container iframe');
+        
+        playButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const videoId = this.getAttribute('data-video');
+                featuredVideo.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1`;
+                
+                // Scroll to featured video
+                document.querySelector('.video-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+        
+        // Lightbox Functionality
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        
+        // Get all gallery images
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        let currentImageIndex = 0;
+        const imageArray = Array.from(galleryImages);
+        
+        // Open lightbox when clicking gallery images
+        galleryImages.forEach((image, index) => {
+            image.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateLightbox();
+                lightboxModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+        
+        // Update lightbox content
+        function updateLightbox() {
+            const currentImage = imageArray[currentImageIndex];
+            lightboxImage.src = currentImage.src;
+            lightboxCaption.textContent = currentImage.closest('.gallery-item').querySelector('h3').textContent;
+        }
+        
+        // Close lightbox
+        lightboxClose.addEventListener('click', () => {
+            lightboxModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close lightbox when clicking outside image
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                lightboxModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Lightbox navigation
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex - 1 + imageArray.length) % imageArray.length;
+            updateLightbox();
+        });
+        
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex + 1) % imageArray.length;
+            updateLightbox();
+        });
+        
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (!lightboxModal.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') {
+                lightboxModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            } else if (e.key === 'ArrowLeft') {
+                currentImageIndex = (currentImageIndex - 1 + imageArray.length) % imageArray.length;
+                updateLightbox();
+            } else if (e.key === 'ArrowRight') {
+                currentImageIndex = (currentImageIndex + 1) % imageArray.length;
+                updateLightbox();
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

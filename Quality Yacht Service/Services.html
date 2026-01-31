@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Yacht Services | Premium Yacht Care in Nassau, Bahamas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --primary: #0a2a5e;
+            --secondary: #1a6bb3;
+            --accent: #f8c51a;
+            --light: #f0f6ff;
+            --dark: #051835;
+            --text: #333333;
+            --text-light: #777777;
+            --white: #ffffff;
+            --off-white: #e0dddd;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #e0b018;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header & Navigation - FIXED */
+        header {
+            position: fixed; /* Changed from absolute to fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            background-color: var(--primary); /* Always blue by default */
+            box-shadow: var(--shadow); /* Always has shadow for visibility */
+        }
+
+        header.scrolled {
+            background-color: var(--primary); /* Still blue when scrolled */
+            padding: 15px 0; /* Slightly smaller padding when scrolled */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Darker shadow when scrolled */
+        }
+
+        /* Add a top margin to the services hero to account for fixed header */
+        .services-hero {
+            margin-top: 100px; /* Adjusted to account for fixed header */
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(5, 24, 53, 0.7), rgba(5, 24, 53, 0.7)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        /* Services Page Styles */
+        .services-hero {
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(5, 24, 53, 0.8), rgba(5, 24, 53, 0.8)), url('https://images.unsplash.com/photo-1581791533173-0d4c69c94a9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .services-hero h1 {
+            font-size: 3rem;
+        }
+
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .services-intro h2 {
+            margin-bottom: 20px;
+        }
+
+        /* Service Selector Tool */
+        .service-selector {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow);
+        }
+
+        .service-selector h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        .selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .selector-btn {
+            padding: 15px;
+            background-color: var(--off-white);
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .selector-btn:hover {
+            border-color: var(--secondary);
+            background-color: rgba(26, 107, 179, 0.05);
+        }
+
+        .selector-btn.selected {
+            border-color: var(--accent);
+            background-color: rgba(248, 197, 26, 0.1);
+            font-weight: 600;
+        }
+
+        /* Service Details Section */
+        .service-details-container {
+            display: none;
+        }
+
+        .service-details-container.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .service-detail-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--secondary);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .service-price {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            white-space: nowrap;
+        }
+
+        .service-duration {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-duration i {
+            font-size: 1.2rem;
+        }
+
+        .service-includes {
+            margin: 25px 0;
+        }
+
+        .service-includes h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .service-includes ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .service-includes li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .service-includes li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .service-note {
+            background-color: rgba(26, 107, 179, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 3px solid var(--secondary);
+        }
+
+        /* Booking Widget */
+        .booking-widget {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: var(--shadow);
+        }
+
+        .booking-widget h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(26, 107, 179, 0.1);
+        }
+
+        .booking-summary {
+            background-color: var(--off-white);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 2px dashed var(--secondary);
+        }
+
+        .booking-summary h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--accent);
+        }
+
+        /* Package Deals */
+        .package-deals {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+
+        .package-deals h2 {
+            color: var(--white);
+        }
+
+        .package-deals h2:after {
+            background-color: var(--accent);
+        }
+
+        .package-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 20px 0;
+        }
+
+        .package-features {
+            list-style-type: none;
+            text-align: left;
+            margin: 25px 0;
+        }
+
+        .package-features li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .package-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-column i {
+            margin-right: 10px;
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .services-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+            
+            .service-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 80px 30px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px 0;
+            }
+            
+            .hero-buttons, .services-hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero {
+                min-height: 600px;
+            }
+            
+            .selector-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                min-height: 500px;
+            }
+            
+            .services-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .service-selector, .service-detail-card, .booking-widget {
+                padding: 25px;
+            }
+            
+            .selector-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Quality<span>Yacht</span>Services</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Contact.html">Charters</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Services Hero -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Services</h1>
+                <p>From routine washes to specialized hull dives, we offer a full suite of yacht maintenance services. All work is performed on-site at your marina.</p>
+                <div class="hero-buttons">
+                    <a href="#service-selector" class="btn btn-primary">Find Your Service</a>
+                    <a href="#booking" class="btn btn-secondary">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Intro -->
+    <section class="services">
+        <div class="container">
+            <div class="services-intro">
+                <h2>Comprehensive Yacht Care</h2>
+                <p>At Quality Yacht Services, we provide a complete range of professional maintenance and detailing services to keep your vessel in pristine condition. Whether you need a quick wash or comprehensive monthly care, our mobile team comes directly to your dock in Nassau and surrounding areas.</p>
+                <p>All services include our 100% satisfaction guarantee and are performed by certified professionals using premium marine-grade products.</p>
+            </div>
+
+            <!-- Service Selector Tool -->
+            <div class="service-selector" id="service-selector">
+                <h3>Which service do you need?</h3>
+                <p style="text-align: center; margin-bottom: 30px;">Select a service below to view details and pricing</p>
+                
+                <div class="selector-grid">
+                    <div class="selector-btn" data-service="exterior-wash">Exterior Wash</div>
+                    <div class="selector-btn" data-service="exterior-detail">Exterior Detailing</div>
+                    <div class="selector-btn" data-service="interior">Interior Cleaning</div>
+                    <div class="selector-btn" data-service="captain">Captain Service</div>
+                    <div class="selector-btn" data-service="hull">Hull Cleaning & Inspection</div>
+                    <div class="selector-btn" data-service="delivery">Yacht Delivery</div>
+                    <div class="selector-btn" data-service="monthly">Monthly Plans</div>
+                </div>
+            </div>
+
+            <!-- Service Details -->
+            <!-- Exterior Wash -->
+            <div class="service-details-container active" id="exterior-wash-details">
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <h3>Exterior Wash</h3>
+                        <div class="service-price">$150 – $500</div>
+                    </div>
+                    
+                    <div class="service-duration">
+                        <i class="far fa-clock"></i> Duration: 1–6 hours (depending on yacht size)
+                    </div>
+                    
+                    <p>A thorough exterior wash to remove salt, dirt, and grime from your yacht's surfaces. Perfect for regular maintenance between detailed services.</p>
+                    
+                    <div class="service-includes">
+                        <h4>Service Includes:</h4>
+                        <ul>
+                            <li>Complete hull and superstructure wash</li>
+                            <li>Marine-safe detergent application</li>
+                            <li>Light stainless steel polish</li>
+                            <li>Window cleaning (exterior)</li>
+                            <li>Deck and cockpit surface cleaning</li>
+                            <li>Light debris removal from drains and scuppers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary book-service" data-service="Exterior Wash" data-price="$150 – $500">Book Exterior Wash</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exterior Detailing -->
+            <div class="service-details-container" id="exterior-detail-details">
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <h3>Exterior Detailing</h3>
+                        <div class="service-price">$400 – $1,000</div>
+                    </div>
+                    
+                    <div class="service-duration">
+                        <i class="far fa-clock"></i> Duration: 3–8 hours (depending on yacht size and condition)
+                    </div>
+                    
+                    <p>Premium exterior detailing service to restore your yacht's showroom shine. Includes comprehensive cleaning, polishing, and protection treatments.</p>
+                    
+                    <div class="service-includes">
+                        <h4>Service Includes:</h4>
+                        <ul>
+                            <li>Deep cleaning of all exterior surfaces</li>
+                            <li>Stainless steel polishing and protection</li>
+                            <li>Multi-stage compounding and polishing (3-step process)</li>
+                            <li>Ceramic coating or wax application</li>
+                            <li>Anchor and chain cleaning</li>
+                            <li>Complete teak refinishing (sanding, oiling, or caulking)</li>
+                            <li>Rub rail and hardware detailing</li>
+                            <li>Final sealant application for UV protection</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-note">
+                        <strong>Note:</strong> This is our most comprehensive exterior service. Recommended quarterly or before special events/charters. Price varies based on yacht size and condition.
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary book-service" data-service="Exterior Detailing" data-price="$400 – $1,000">Book Exterior Detailing</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interior Cleaning -->
+            <div class="service-details-container" id="interior-details">
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <h3>Interior Cleaning</h3>
+                        <div class="service-price">$200 – $600</div>
+                    </div>
+                    
+                    <div class="service-duration">
+                        <i class="far fa-clock"></i> Duration: 2–4 hours
+                    </div>
+                    
+                    <p>Keep your yacht's interior fresh and sanitary with our thorough deep cleaning service. We pay attention to every detail to ensure a pristine living environment on board.</p>
+                    
+                    <div class="service-includes">
+                        <h4>Service Includes:</h4>
+                        <ul>
+                            <li>Cabin vacuuming</li>
+                            <li>Head (bathroom) deep clean</li>
+                            <li>Galley degreasing & appliance wipe-down</li>
+                            <li>All surface dusting and polishing</li>
+                            <li>Interior window and mirror cleaning</li>
+                            <li>Bed linen service (optional: change and laundry service)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-note">
+                        <strong>Optional Add-on:</strong> Upholstery treatment available for an additional $75–$150 depending on surface area.
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary book-service" data-service="Interior Cleaning" data-price="$200 – $600">Book Interior Clean</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Captain Service -->
+            <div class="service-details-container" id="captain-details">
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <h3>Captain Service (Freelance)</h3>
+                        <div class="service-price">$250 – $500</div>
+                    </div>
+                    
+                    <div class="service-duration">
+                        <i class="far fa-clock"></i> Duration: Varies by request
+                    </div>
+                    
+                    <p>Need assistance on the water? Our licensed and experienced captains provide professional services for various needs, from marina maneuvers to short-distance relocations.</p>
+                    
+                    <div class="service-includes">
+                        <h4>Service Includes:</h4>
+                        <ul>
+                            <li>Short-distance yacht relocation</li>
+                            <li>Marina maneuver assistance</li>
+                            <li>On-water supervision</li>
+                            <li>Docking/undocking support</li>
+                            <li>Basic systems orientation</li>
+                            <li>Local knowledge of Nassau waters</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-note">
+                        <strong>Note:</strong> All our captains are licensed, experienced professionals with extensive knowledge of local waters. Pricing varies based on duration and complexity of service.
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary book-service" data-service="Captain Service" data-price="$250 – $500">Inquire About Captain Service</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hull Cleaning & Inspection -->
+            <div class="service-details-container" id="hull-details">
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <h3>Hull Cleaning & Inspection (Dive Service)</h3>
+                        <div class="service-price">$250 – $700</div>
+                    </div>
+                    
+                    <div class="service-duration">
+                        <i class="far fa-clock"></i> Duration: 1–3 hours
+                    </div>
+                    
+                    <p>Maintain optimal performance and fuel efficiency with regular hull cleaning. Our certified divers provide thorough underwater cleaning and inspection services.</p>
+                    
+                    <div class="service-includes">
+                        <h4>Service Includes:</h4>
+                        <ul>
+                            <li>Underwater hull scrub</li>
+                            <li>Propeller cleaning</li>
+                            <li>Visual inspection for damage/barnacles</li>
+                            <li>Light growth removal</li>
+                            <li>Through-hull fitting inspection</li>
+                            <li>Rudder and keel inspection</li>
+                            <li>Zinc anode check</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-note">
+                        <strong>Note:</strong> Certified diver using environmentally safe methods. Additional charges may apply for heavy growth or extensive barnacle removal.
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary book-service" data-service="Hull Cleaning & Inspection" data-price="$250 – $700">Schedule Hull Cleaning</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yacht Delivery -->
+            <div class="service-details-container" id="delivery-details">
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <h3>Yacht Delivery (Local)</h3>
+                        <div class="service-price">$150 – $1,000</div>
+                    </div>
+                    
+                    <div class="service-duration">
+                        <i class="far fa-clock"></i> Duration: By arrangement
+                    </div>
+                    
+                    <p>Need to move your yacht? Our professional delivery service ensures safe and efficient relocation between marinas, storage facilities, or service locations in the Bahamas or Florida.</p>
+                    
+                    <div class="service-includes">
+                        <h4>Service Includes:</h4>
+                        <ul>
+                            <li>Relocation Service</li>
+                            <li>Fuel check & basic systems review</li>
+                            <li>Dock-to-dock service</li>
+                            <li>Pre-departure safety check</li>
+                            <li>Continuous communication during transit</li>
+                            <li>Post-delivery walkthrough</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-note">
+                        <strong>Note:</strong> Pricing varies based on distance, yacht size, and specific requirements. Contact us for a custom quote based on your needs.
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary book-service" data-service="Yacht Delivery" data-price="$150 – $1,000">Arrange Delivery</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Service Plans -->
+            <div class="service-details-container" id="monthly-details">
+                <div class="service-detail-card">
+                    <div class="service-header">
+                        <h3>Monthly Service Plans</h3>
+                        <div class="service-price">$600 – $1,200/month</div>
+                    </div>
+                    
+                    <div class="service-duration">
+                        <i class="far fa-clock"></i> Ongoing monthly service
+                    </div>
+                    
+                    <p>Simplify your yacht maintenance with our comprehensive monthly care plans. Enjoy consistent, professional care with priority scheduling and exclusive benefits.</p>
+                    
+                    <div class="service-includes">
+                        <h4>Plan Includes:</h4>
+                        <ul>
+                            <li>Weekly or bi-weekly exterior wash</li>
+                            <li>Bi-weekly or monthly interior tidy</li>
+                            <li>Quarterly exterior detailing(not in price)</li>
+                            <li>Monthly hull inspection</li>
+                            <li>Priority booking for all services</li>
+                            <li>Check dock lines, fenders, and shore power</li>
+                            <li>Monthly Digital Report</li>
+                            <li>Provisioning</li>
+                            <li>Vendor Coordination</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-note">
+                        <strong>Note:</strong> Plans are customizable based on your yacht size and specific needs. Contact us to design the perfect maintenance plan for your vessel.
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary book-service" data-service="Monthly Service Plan" data-price="$600 – $1,200/month">View Plan Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Widget -->
+            <div class="booking-widget" id="booking">
+                <h3>Book Your Service</h3>
+                <p style="text-align: center; margin-bottom: 30px;">Fill out the form below to schedule your yacht service. We'll contact you within 24 hours to confirm details.</p>
+                
+                <form id="bookingForm">
+                    <div class="booking-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="yacht">Yacht Name & Size *</label>
+                            <input type="text" id="yacht" class="form-control" placeholder="e.g., 'Sea Breeze, 45ft'" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="marina">Marina Location *</label>
+                            <input type="text" id="marina" class="form-control" placeholder="e.g., 'Nassau Yacht Haven'" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Select Service *</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Choose a service</option>
+                                <option value="Exterior Wash">Exterior Wash</option>
+                                <option value="Exterior Detailing">Exterior Detailing</option>
+                                <option value="Interior Cleaning">Interior Cleaning</option>
+                                <option value="Captain Service">Captain Service</option>
+                                <option value="Hull Cleaning & Inspection">Hull Cleaning & Inspection</option>
+                                <option value="Yacht Delivery">Yacht Delivery</option>
+                                <option value="Monthly Service Plan">Monthly Service Plan</option>
+                                <option value="Dockside Clean">Dockside Clean</option>
+                                <option value="Captain's Choice">Captain's Choice</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Additional Details</label>
+                            <textarea id="message" class="form-control" rows="3" placeholder="Any special requests or details about your yacht..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-summary">
+                        <h4>Service Summary</h4>
+                        <div class="summary-item">
+                            <span>Selected Service:</span>
+                            <span id="selected-service-display">None selected</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Estimated Price Range:</span>
+                            <span id="selected-price-display">-</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>Total Estimate:</span>
+                            <span id="total-estimate">Contact for exact quote</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center" style="margin-top: 30px;">
+                        <button type="submit" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">Submit Booking Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> (242) 551-4171</p>
+                    <p><i class="fas fa-envelope"></i> info@qualityyachtservices.com</p>
+                    <p><i class="fab fa-whatsapp"></i> (242) 551-4171 (WhatsApp)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Serving Nassau, Bahamas & surrounding areas</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Charter</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ready to Book?</h3>
+                    <p>Schedule your yacht service online or contact us directly for a custom quote.</p>
+                    <a href="services.html#booking" onclick="scrollToBookingWidget()" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Quality Yacht Services. All rights reserved. | Founded by Tray Curry | Nassau, Bahamas</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    if (mobileMenuBtn) {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks && navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+
+        // Header scroll effect - still works but header is always blue
+        const header = document.getElementById('header');
+        if (header) {
+            // Add scrolled class immediately on page load
+            header.classList.add('scrolled');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.add('scrolled'); // Always blue
+                }
+            });
+        }
+        
+        // Service Selector Functionality
+        const selectorBtns = document.querySelectorAll('.selector-btn');
+        const serviceDetails = document.querySelectorAll('.service-details-container');
+        
+        // Show first service by default
+        if (document.getElementById('exterior-wash-details')) {
+            document.getElementById('exterior-wash-details').classList.add('active');
+        }
+        if (document.querySelector('[data-service="exterior-wash"]')) {
+            document.querySelector('[data-service="exterior-wash"]').classList.add('selected');
+        }
+        
+        selectorBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove selected class from all buttons
+                selectorBtns.forEach(b => b.classList.remove('selected'));
+                
+                // Add selected class to clicked button
+                this.classList.add('selected');
+                
+                // Hide all service details
+                serviceDetails.forEach(detail => {
+                    detail.classList.remove('active');
+                });
+                
+                // Show selected service details
+                const serviceType = this.getAttribute('data-service');
+                const targetId = `${serviceType}-details`;
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.classList.add('active');
+                    // Scroll to details
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                
+                // Update booking form
+                updateBookingForm(serviceType);
+            });
+        });
+        
+        // Update booking form based on service selection
+        function updateBookingForm(serviceType) {
+            const serviceSelect = document.getElementById('service');
+            const serviceDisplay = document.getElementById('selected-service-display');
+            const priceDisplay = document.getElementById('selected-price-display');
+            
+            if (!serviceSelect || !serviceDisplay || !priceDisplay) return;
+            
+            let serviceName = '';
+            let servicePrice = '';
+            
+            switch(serviceType) {
+                case 'exterior-wash':
+                    serviceName = 'Exterior Wash';
+                    servicePrice = '$150 – $500';
+                    break;
+                case 'exterior-detail':
+                    serviceName = 'Exterior Detailing';
+                    servicePrice = '$400 – $1,000';
+                    break;
+                case 'interior':
+                    serviceName = 'Interior Cleaning';
+                    servicePrice = '$200 – $600';
+                    break;
+                case 'captain':
+                    serviceName = 'Captain Service';
+                    servicePrice = '$250 – $500';
+                    break;
+                case 'hull':
+                    serviceName = 'Hull Cleaning & Inspection';
+                    servicePrice = '$250 – $700';
+                    break;
+                case 'delivery':
+                    serviceName = 'Yacht Delivery';
+                    servicePrice = '$150 – $1,000';
+                    break;
+                case 'monthly':
+                    serviceName = 'Monthly Service Plan';
+                    servicePrice = '$600 – $1,200/month';
+                    break;
+            }
+            
+            // Update form and display
+            if (serviceName) {
+                serviceSelect.value = serviceName;
+                serviceDisplay.textContent = serviceName;
+                priceDisplay.textContent = servicePrice;
+            }
+        }
+        
+        // Book Service buttons
+        document.querySelectorAll('.book-service').forEach(button => {
+            button.addEventListener('click', function() {
+                const serviceName = this.getAttribute('data-service');
+                const servicePrice = this.getAttribute('data-price');
+                
+                // Update booking form
+                const serviceSelect = document.getElementById('service');
+                const serviceDisplay = document.getElementById('selected-service-display');
+                const priceDisplay = document.getElementById('selected-price-display');
+                const bookingSection = document.getElementById('booking');
+                
+                if (serviceSelect) serviceSelect.value = serviceName;
+                if (serviceDisplay) serviceDisplay.textContent = serviceName;
+                if (priceDisplay) priceDisplay.textContent = servicePrice;
+                
+                // Scroll to booking form
+                if (bookingSection) {
+                    bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Update booking summary when form changes
+        const serviceSelect = document.getElementById('service');
+        if (serviceSelect) {
+            serviceSelect.addEventListener('change', function() {
+                const serviceName = this.value;
+                const serviceDisplay = document.getElementById('selected-service-display');
+                const priceDisplay = document.getElementById('selected-price-display');
+                
+                if (serviceDisplay) {
+                    serviceDisplay.textContent = serviceName || 'None selected';
+                }
+                
+                // Update price based on service
+                let price = '-';
+                switch(serviceName) {
+                    case 'Exterior Wash':
+                        price = '$150 – $500';
+                        break;
+                    case 'Exterior Detailing':
+                        price = '$400 – $1,000';
+                        break;
+                    case 'Interior Cleaning':
+                        price = '$200 – $600';
+                        break;
+                    case 'Captain Service':
+                        price = '$250 – $500';
+                        break;
+                    case 'Hull Cleaning & Inspection':
+                        price = '$250 – $700';
+                        break;
+                    case 'Yacht Delivery':
+                        price = '$150 – $1,000';
+                        break;
+                    case 'Monthly Service Plan':
+                        price = '$600 – $1,200/month';
+                        break;
+                    case 'Dockside Clean':
+                        price = '$600/month';
+                        break;
+                    case "Captain's Choice":
+                        price = '$900/month';
+                        break;
+                }
+                
+                if (priceDisplay) {
+                    priceDisplay.textContent = price;
+                }
+            });
+        }
+        
+        // Form submission
+        const bookingForm = document.getElementById('bookingForm');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name')?.value || '';
+                const email = document.getElementById('email')?.value || '';
+                const service = document.getElementById('service')?.value || '';
+                
+                // Show confirmation message
+                if (name && email && service) {
+                    alert(`Thank you ${name}! Your booking request for "${service}" has been submitted. We'll contact you at ${email} within 24 hours to confirm details and provide an exact quote.`);
+                    
+                    // Reset form
+                    this.reset();
+                    const serviceDisplay = document.getElementById('selected-service-display');
+                    const priceDisplay = document.getElementById('selected-price-display');
+                    if (serviceDisplay) serviceDisplay.textContent = 'None selected';
+                    if (priceDisplay) priceDisplay.textContent = '-';
+                }
+            });
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

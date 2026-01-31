@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Booking | Quality Yacht Services - Nassau, Bahamas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
+    <style>
+        :root {
+            --primary: #0a2a5e;
+            --secondary: #1a6bb3;
+            --accent: #f8c51a;
+            --light: #f0f6ff;
+            --dark: #051835;
+            --text: #333333;
+            --text-light: #777777;
+            --white: #ffffff; /* Changed to pure white for better contrast */
+            --off-white: #e0dddd;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #e0b018;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header & Navigation - FIXED */
+        header {
+            position: absolute; /* Absolute by default */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            background-color: var(--primary); /* Blue background always */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow always */
+        }
+
+        header.scrolled {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: fixed; /* Becomes fixed when scrolled */
+        }
+
+        /* Add margin to account for the header */
+        .contact-hero {
+            margin-top: 90px; /* Adjusted for the header height */
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Contact Hero */
+        .contact-hero {
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(5, 24, 53, 0.8), rgba(5, 24, 53, 0.8)), url('https://images.unsplash.com/photo-1578645510447-e5db4711c356?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Contact Info Section */
+        .contact-info-section {
+            background-color: var(--light);
+        }
+
+        .contact-info-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-top: 20px;
+        }
+
+        .contact-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-details i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+
+        /* Operating Hours */
+        .hours-container {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .hours-container h3 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .day {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .time {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .note {
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* Booking System */
+        .booking-section {
+            background-color: var(--white);
+        }
+
+        .booking-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 60px;
+        }
+
+        .booking-widget {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .booking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .booking-steps:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            border: 3px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .step.active .step-number {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .step.completed .step-number {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .step.active .step-label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .booking-form-container {
+            margin-top: 30px;
+        }
+
+        .booking-step {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .booking-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(26, 107, 179, 0.1);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .booking-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(26, 107, 179, 0.1);
+        }
+
+        /* Service Selection */
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .service-option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-option:hover {
+            border-color: var(--secondary);
+            background-color: rgba(26, 107, 179, 0.05);
+        }
+
+        .service-option.selected {
+            border-color: var(--accent);
+            background-color: rgba(248, 197, 26, 0.1);
+            font-weight: 600;
+        }
+
+        .service-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .service-price {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Booking Summary */
+        .booking-summary {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 2px dashed var(--secondary);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--accent);
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            background-color: var(--light);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h3 {
+            margin-bottom: 10px;
+        }
+
+        .response-notice {
+            background-color: rgba(26, 107, 179, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border-left: 3px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .response-notice i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 60px 0 0;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+        }
+
+        #service-map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .map-caption {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-column i {
+            margin-right: 10px;
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+            
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-steps {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .booking-steps:before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 80px 30px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px 0;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-card {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .contact-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .contact-form, .booking-widget {
+                padding: 25px;
+            }
+            
+            .booking-steps {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Calendar Styles */
+        .calendar-container {
+            margin-top: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        .calendar-month {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            padding: 10px;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 12px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calendar-day:hover:not(.disabled):not(.selected) {
+            background-color: rgba(26, 107, 179, 0.1);
+        }
+
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.selected {
+            background-color: var(--secondary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .calendar-day.today {
+            border: 2px solid var(--accent);
+        }
+
+        /* Time Slots */
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .time-slot {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .time-slot:hover {
+            border-color: var(--secondary);
+        }
+
+        .time-slot.selected {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .time-slot.disabled {
+            background-color: #f5f5f5;
+            color: #ccc;
+            cursor: not-allowed;
+            border-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Quality<span>Yacht</span>Services</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Contact.html">Charters</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Schedule Your Service</h1>
+                <p>Contact us directly or book your yacht service online. Our mobile team comes to your marina throughout Nassau and the surrounding areas.</p>
+                <a href="#contact" class="btn btn-secondary" style="margin-left: 20px;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Multiple ways to reach us. We're here to help with all your yacht maintenance needs.</p>
+            
+            <div class="contact-info-container">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with Tray or our service coordinator</p>
+                    <div class="contact-details">
+                        <p><i class="fas fa-phone"></i> (242) 555-4171</p>
+                        <p><i class="fas fa-clock"></i> 6 days/week, 8am–6pm</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Send us details about your service needs</p>
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> info@qualityyachtservices.com</p>
+                        <p><i class="fas fa-envelope"></i> tray@qualityyachtservices.com</p>
+                        <p><i class="fas fa-reply"></i> Response within 24 hours</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Quick questions or photo inquiries</p>
+                    <div class="contact-details">
+                        <p><i class="fab fa-whatsapp"></i> (242) 551-4171</p>
+                        <a href="https://wa.me/12425514171?text=Hello%20Quality%20Yacht%20Services%2C%20I'm%20interested%20in%20your%20services" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Click to Chat on WhatsApp
+                        </a>
+                        <p style="margin-top: 15px; font-size: 0.9rem;">Great for sending photos of your yacht for assessment</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Operating Hours -->
+            <div class="hours-container">
+                <h3>Operating Hours</h3>
+                <ul class="hours-list">
+                    <li>
+                        <span class="day">Monday - Friday</span>
+                        <span class="time">8:00 AM - 6:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Saturday</span>
+                        <span class="time">9:00 AM - 5:00 PM</span>
+                    </li>
+                    <li>
+                        <span class="day">Sunday</span>
+                        <span class="time">Emergency Service Only</span>
+                    </li>
+                </ul>
+                <p class="note">Flexible appointments available outside regular hours by special arrangement</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section" id="contact">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Contact Form</h2>
+                    <p>Prefer to send us a message? Fill out the form below and we'll get back to you promptly.</p>
+                </div>
+                
+                <div class="response-notice">
+                    <i class="fas fa-clock"></i>
+                    <div><strong>Response Time:</strong> We respond to all inquiries within 24 hours, often sooner.</div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Full Name *</label>
+                                <input type="text" id="contact-name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email Address *</label>
+                                <input type="email" id="contact-email" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-phone">Phone Number</label>
+                                <input type="tel" id="contact-phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-yacht-length">Yacht Length</label>
+                                <input type="text" id="contact-yacht-length" class="form-control" placeholder="e.g., 45ft">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-marina">Marina / Location</label>
+                            <input type="text" id="contact-marina" class="form-control" placeholder="e.g., Nassau Yacht Haven">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-service">Service Interested In</label>
+                            <select id="contact-service" class="form-control">
+                                <option value="">Select a service</option>
+                                <option value="Exterior Detailing">Exterior Wash & Detail</option>
+                                <option value="Interior Cleaning">Interior Deep Cleaning</option>
+                                <option value="Hull Cleaning">Hull Cleaning & Inspection</option>
+                                <option value="Teak Restoration">Teak Cleaning & Sealing</option>
+                                <option value="Captain Service">Captain Service</option>
+                                <option value="Yacht Delivery">Yacht Delivery</option>
+                                <option value="Monthly Plan">Monthly Care Plan</option>
+                                <option value="Multiple Services">Multiple Services</option>
+                                <option value="Not Sure">Not Sure - Need Recommendation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-message">Message *</label>
+                            <textarea id="contact-message" class="form-control" rows="5" placeholder="Tell us about your yacht and service needs..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group" style="text-align: center;">
+                            <button type="submit" class="btn btn-primary" style="padding: 15px 50px; font-size: 1.1rem;">Send Inquiry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> (242) 551-4171</p>
+                    <p><i class="fas fa-envelope"></i> info@qualityyachtservices.com</p>
+                    <p><i class="fab fa-whatsapp"></i> (242) 551-4171 (WhatsApp)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Serving Nassau, Bahamas & surrounding areas</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Charter</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ready to Book?</h3>
+                    <p>Schedule your yacht service online or contact us directly for a custom quote.</p>
+                    <a href="services.html#booking" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Quality Yacht Services. All rights reserved. | Founded by Tray Curry | Nassau, Bahamas</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    if (mobileMenuBtn) {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks && navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        if (header) {
+            // Add scrolled class immediately on page load
+            header.classList.add('scrolled');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.add('scrolled'); // Always blue
+                }
+            });
+        }
+        
+        // Booking System Functionality
+        let selectedService = '';
+        let selectedServicePrice = '';
+        let selectedDate = '';
+        let selectedTime = '';
+        
+        // Service Selection
+        document.querySelectorAll('.service-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                document.querySelectorAll('.service-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Store selected service
+                selectedService = this.getAttribute('data-service');
+                selectedServicePrice = this.getAttribute('data-price');
+            });
+        });
+        
+        // Date Selection Calendar
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+        
+        function renderCalendar(month, year) {
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            
+            // Update month display
+            document.querySelector('.calendar-month').textContent = `${monthNames[month]} ${year}`;
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            // Clear previous calendar days
+            const calendarDays = document.getElementById('calendar-days');
+            if (calendarDays) {
+                calendarDays.innerHTML = '';
+                
+                // Add empty cells for days before first day of month
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'calendar-day disabled';
+                    emptyDay.textContent = '';
+                    calendarDays.appendChild(emptyDay);
+                }
+                
+                // Add days of the month
+                const today = new Date();
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    dayElement.textContent = day;
+                    
+                    // Check if date is in the past
+                    const date = new Date(year, month, day);
+                    if (date < today.setHours(0, 0, 0, 0)) {
+                        dayElement.classList.add('disabled');
+                    }
+                    
+                    // Check if it's today
+                    if (date.toDateString() === today.toDateString()) {
+                        dayElement.classList.add('today');
+                    }
+                    
+                    // Add click event
+                    dayElement.addEventListener('click', function() {
+                        if (!this.classList.contains('disabled')) {
+                            // Remove selected class from all days
+                            document.querySelectorAll('.calendar-day').forEach(dayEl => {
+                                dayEl.classList.remove('selected');
+                            });
+                            
+                            // Add selected class to clicked day
+                            this.classList.add('selected');
+                            
+                            // Store selected date
+                            selectedDate = `${monthNames[month]} ${day}, ${year}`;
+                        }
+                    });
+                    
+                    calendarDays.appendChild(dayElement);
+                }
+            }
+        }
+        
+        // Initialize calendar if elements exist
+        const calendarMonth = document.querySelector('.calendar-month');
+        const prevMonthBtn = document.querySelector('.prev-month');
+        const nextMonthBtn = document.querySelector('.next-month');
+        
+        if (calendarMonth && prevMonthBtn && nextMonthBtn) {
+            renderCalendar(currentMonth, currentYear);
+            
+            // Calendar navigation
+            prevMonthBtn.addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+            
+            nextMonthBtn.addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+        }
+        
+        // Time slot selection
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                if (!this.classList.contains('disabled')) {
+                    // Remove selected class from all time slots
+                    document.querySelectorAll('.time-slot').forEach(timeSlot => {
+                        timeSlot.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked time slot
+                    this.classList.add('selected');
+                    
+                    // Store selected time
+                    selectedTime = this.textContent;
+                }
+            });
+        });
+        
+        // Booking Steps Navigation
+        document.querySelectorAll('.next-step').forEach(button => {
+            button.addEventListener('click', function() {
+                const nextStep = this.getAttribute('data-next');
+                navigateToStep(nextStep);
+            });
+        });
+        
+        document.querySelectorAll('.prev-step').forEach(button => {
+            button.addEventListener('click', function() {
+                const prevStep = this.getAttribute('data-prev');
+                navigateToStep(prevStep);
+            });
+        });
+        
+        function navigateToStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.booking-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Remove active class from all step indicators
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Add completed class to previous steps
+            for (let i = 1; i < stepNumber; i++) {
+                const stepElement = document.getElementById(`step${i}`);
+                if (stepElement) {
+                    stepElement.classList.add('completed');
+                }
+            }
+            
+            // Show current step
+            const stepContent = document.getElementById(`step${stepNumber}-content`);
+            const stepIndicator = document.getElementById(`step${stepNumber}`);
+            
+            if (stepContent) stepContent.classList.add('active');
+            if (stepIndicator) stepIndicator.classList.add('active');
+            
+            // Update booking summary in step 4
+            if (stepNumber === '4') {
+                updateBookingSummary();
+            }
+            
+            // Scroll to top of booking widget
+            const bookingWidget = document.querySelector('.booking-widget');
+            if (bookingWidget) {
+                bookingWidget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        function updateBookingSummary() {
+            const summaryService = document.getElementById('summary-service');
+            const summaryDate = document.getElementById('summary-date');
+            const summaryTime = document.getElementById('summary-time');
+            const summaryPrice = document.getElementById('summary-price');
+            const summaryYacht = document.getElementById('summary-yacht');
+            const summaryLocation = document.getElementById('summary-location');
+            
+            if (summaryService) summaryService.textContent = selectedService || 'Not selected';
+            if (summaryDate) summaryDate.textContent = selectedDate || 'Not selected';
+            if (summaryTime) summaryTime.textContent = selectedTime || 'Not selected';
+            if (summaryPrice) summaryPrice.textContent = selectedServicePrice || 'Contact for exact quote';
+            
+            // Get yacht details if available
+            const yachtLength = document.getElementById('yacht-length')?.value || '';
+            const yachtType = document.getElementById('yacht-type')?.value || '';
+            const marinaLocation = document.getElementById('marina-location')?.value || '';
+            
+            let yachtSummary = '';
+            if (yachtLength) {
+                yachtSummary = `${yachtLength}ft`;
+                if (yachtType) {
+                    yachtSummary += ` ${yachtType}`;
+                }
+            } else {
+                yachtSummary = 'Not provided';
+            }
+            
+            if (summaryYacht) summaryYacht.textContent = yachtSummary;
+            if (summaryLocation) summaryLocation.textContent = marinaLocation || 'Not provided';
+        }
+        
+        // Submit Booking
+        const submitBookingBtn = document.getElementById('submit-booking');
+        if (submitBookingBtn) {
+            submitBookingBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Validate terms agreement
+                const termsAgree = document.getElementById('terms-agree');
+                if (!termsAgree?.checked) {
+                    alert('Please agree to the Terms of Service to continue.');
+                    return;
+                }
+                
+                // Get form data
+                const clientName = document.getElementById('client-name')?.value || '';
+                const clientEmail = document.getElementById('client-email')?.value || '';
+                const clientPhone = document.getElementById('client-phone')?.value || '';
+                
+                if (!clientName || !clientEmail || !clientPhone) {
+                    alert('Please fill in all required fields (marked with *).');
+                    return;
+                }
+                
+                // Show success message
+                alert(`Thank you ${clientName}! Your booking request for "${selectedService}" has been submitted. We'll contact you at ${clientEmail} within 24 hours to confirm details and provide an exact quote.`);
+                
+                // Reset form (in a real app, this would submit to a server)
+                resetBookingForm();
+                navigateToStep('1');
+            });
+        }
+        
+        function resetBookingForm() {
+            // Reset selections
+            selectedService = '';
+            selectedServicePrice = '';
+            selectedDate = '';
+            selectedTime = '';
+            
+            // Clear form fields
+            const fields = ['client-name', 'client-email', 'client-phone', 'yacht-length', 'yacht-type', 'marina-location', 'special-requests'];
+            fields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (field) field.value = '';
+            });
+            
+            const termsAgree = document.getElementById('terms-agree');
+            if (termsAgree) termsAgree.checked = false;
+            
+            // Reset UI selections
+            document.querySelectorAll('.service-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.calendar-day').forEach(day => {
+                day.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.time-slot').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+        }
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const contactName = document.getElementById('contact-name')?.value || '';
+                const contactEmail = document.getElementById('contact-email')?.value || '';
+                const contactMessage = document.getElementById('contact-message')?.value || '';
+                
+                if (!contactName || !contactEmail || !contactMessage) {
+                    alert('Please fill in all required fields (marked with *).');
+                    return;
+                }
+                
+                // Show success message
+                alert(`Thank you ${contactName}! Your inquiry has been sent. We'll respond to ${contactEmail} within 24 hours.`);
+                
+                // Reset form
+                this.reset();
+            });
+        }
+        
+        // Initialize Map
+        function initMap() {
+            const mapContainer = document.getElementById('service-map');
+            if (!mapContainer) return;
+            
+            // Nassau, Bahamas coordinates
+            const nassau = [25.0343, -77.3963];
+            
+            // Create map
+            const map = L.map('service-map').setView(nassau, 11);
+            
+            // Add tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add service area circle (30 mile radius)
+            L.circle(nassau, {
+                color: '#1a6bb3',
+                fillColor: '#1a6bb3',
+                fillOpacity: 0.1,
+                radius: 40000 // ~25 miles in meters
+            }).addTo(map);
+            
+            // Add markers for key service areas
+            const marinaLocations = [
+                {name: "Nassau Marina", coords: [25.0785, -77.3410]},
+                {name: "Paradise Island Marina", coords: [25.0850, -77.3210]},
+                {name: "Lyford Cay Marina", coords: [25.0333, -77.5500]},
+                {name: "Albany Marina", coords: [25.0280, -77.4670]},
+                {name: "Coral Harbour Marina", coords: [24.9800, -77.5300]}
+            ];
+            
+            marinaLocations.forEach(location => {
+                L.marker(location.coords)
+                    .addTo(map)
+                    .bindPopup(`<b>${location.name}</b><br>Service Location`);
+            });
+            
+            // Add main marker
+            L.marker(nassau)
+                .addTo(map)
+                .bindPopup('<b>Quality Yacht Services</b><br>Base Location<br>Mobile Service Throughout Area')
+                .openPopup();
+        }
+        
+        // Initialize map when page loads
+        window.addEventListener('DOMContentLoaded', initMap);
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

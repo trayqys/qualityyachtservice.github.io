@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Yacht Service | Quality Yacht Services - Nassau, Bahamas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a2a5e;
+            --secondary: #1a6bb3;
+            --accent: #f8c51a;
+            --light: #f0f6ff;
+            --dark: #051835;
+            --text: #333333;
+            --text-light: #777777;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f9fafc;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--white);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #e0b018;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: #155a9e;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(26, 107, 179, 0.1);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: fixed;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Booking Hero */
+        .booking-hero {
+            height: 70vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(5, 24, 53, 0.85), rgba(5, 24, 53, 0.85)), url('https://images.unsplash.com/photo-1578645510447-e5db4711c356?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .booking-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .booking-hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Booking Process */
+        .booking-process {
+            background-color: var(--white);
+            padding: 80px 0 40px;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #eee;
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--white);
+            border: 3px solid #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: 700;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .step.active .step-number {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .step.completed .step-number {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .step-label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .step.active .step-label {
+            color: var(--primary);
+        }
+
+        /* Booking Container */
+        .booking-container {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        .booking-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 30px 40px;
+        }
+
+        .booking-header h2 {
+            color: var(--white);
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .booking-header h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        .booking-header p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        .booking-content {
+            padding: 40px;
+        }
+
+        /* Service Selection */
+        .service-selection {
+            margin-bottom: 40px;
+        }
+
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-option {
+            border: 2px solid #eee;
+            border-radius: 10px;
+            padding: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-option:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-option.selected {
+            border-color: var(--accent);
+            background-color: rgba(248, 197, 26, 0.05);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .service-duration {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .service-features li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Form Styles */
+        .booking-form-section {
+            display: none;
+        }
+
+        .booking-form-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(26, 107, 179, 0.1);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Date & Time Selection */
+        .datetime-selection {
+            margin-top: 30px;
+        }
+
+        .date-picker {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .date-option {
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .date-option:hover {
+            border-color: var(--secondary);
+        }
+
+        .date-option.selected {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .day-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .day-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        .date-option.selected .day-date {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .time-slot {
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .time-slot:hover {
+            border-color: var(--secondary);
+        }
+
+        .time-slot.selected {
+            background-color: var(--accent);
+            color: var(--dark);
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .time-slot.disabled {
+            background-color: #f5f5f5;
+            color: #ccc;
+            cursor: not-allowed;
+            border-color: #eee;
+        }
+
+        /* Booking Summary */
+        .booking-summary {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 2px dashed var(--secondary);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--accent);
+        }
+
+        /* Booking Navigation */
+        .booking-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            background-color: var(--light);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .guarantee-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .guarantee-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--white);
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 25px 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-top: 0;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding-top: 20px;
+        }
+
+        .faq-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-column i {
+            margin-right: 10px;
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .booking-hero {
+                height: 60vh;
+                min-height: 500px;
+                margin-top: 70px;
+            }
+            
+            .process-steps {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+            
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 80px 30px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px 0;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .booking-content {
+                padding: 30px 20px;
+            }
+            
+            .booking-header {
+                padding: 25px 30px;
+            }
+            
+            .booking-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .booking-navigation .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .booking-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .date-picker {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+     <header id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Quality<span>Yacht</span>Services</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Contact.html">Charters</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Booking Hero -->
+    <section class="booking-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Book Your Yacht Service</h1>
+                <p>Schedule professional yacht detailing and maintenance at your dock in Nassau, Bahamas. Choose your service, pick a time, and we'll handle the rest.</p>
+                <a href="#booking-process" class="btn btn-primary">Start Booking</a>
+                <a href="tel:+12425559224" class="btn btn-outline" style="margin-left: 15px; color: white; border-color: white;">
+                    <i class="fas fa-phone"></i> Call to Book
+                </a>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Booking Available</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2,000+</div>
+                        <div class="stat-label">Yachts Serviced</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Process -->
+    <section class="booking-process" id="booking-process">
+        <div class="container">
+            <h2>Simple 3-Step Booking Process</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Book your yacht service in minutes with our straightforward process. We'll confirm your appointment within 24 hours.</p>
+            
+            <div class="process-steps">
+                <div class="step active" id="step1-indicator">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Choose Service</div>
+                </div>
+                <div class="step" id="step2-indicator">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Pick Date & Time</div>
+                </div>
+                <div class="step" id="step3-indicator">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Confirm Details</div>
+                </div>
+            </div>
+            
+            <!-- Booking Container -->
+            <div class="booking-container">
+                <div class="booking-header">
+                    <h2>Book Your Service</h2>
+                    <p>Select from our range of professional yacht services available throughout Nassau and surrounding areas.</p>
+                </div>
+                
+                <div class="booking-content">
+                    <!-- Step 1: Service Selection -->
+                    <div class="booking-form-section active" id="step1-content">
+                        <div class="service-selection">
+                            <h3>Select Your Service</h3>
+                            <p>Choose the service that best fits your yacht's needs. All services include our 100% satisfaction guarantee.</p>
+                            
+                            <div class="service-options">
+                                <!-- Exterior Service -->
+                                <div class="service-option" data-service="exterior" data-price="350-600">
+                                    <div class="service-badge">Most Popular</div>
+                                    <div class="service-icon">
+                                        <i class="fas fa-water"></i>
+                                    </div>
+                                    <h4>Exterior Wash & Detail</h4>
+                                    <div class="service-price">$350 – $600</div>
+                                    <div class="service-duration">
+                                        <i class="far fa-clock"></i> 3–6 hours
+                                    </div>
+                                    <p>Complete exterior wash, wax, polish, and stainless steel cleaning.</p>
+                                    <ul class="service-features">
+                                        <li>Full exterior wash with marine-grade soap</li>
+                                        <li>Hand drying & spot-free rinse</li>
+                                        <li>Wax application & buffing</li>
+                                        <li>Stainless steel polish</li>
+                                        <li>Window cleaning</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Interior Service -->
+                                <div class="service-option" data-service="interior" data-price="200-400">
+                                    <div class="service-icon">
+                                        <i class="fas fa-couch"></i>
+                                    </div>
+                                    <h4>Interior Deep Cleaning</h4>
+                                    <div class="service-price">$200 – $400</div>
+                                    <div class="service-duration">
+                                        <i class="far fa-clock"></i> 2–4 hours
+                                    </div>
+                                    <p>Thorough interior cleaning and sanitization for cabins, galley, and heads.</p>
+                                    <ul class="service-features">
+                                        <li>Cabin vacuuming & sanitization</li>
+                                        <li>Head (bathroom) deep clean</li>
+                                        <li>Galley degreasing</li>
+                                        <li>Appliance wipe-down</li>
+                                        <li>Upholstery treatment (optional)</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Hull Service -->
+                                <div class="service-option" data-service="hull" data-price="250-500">
+                                    <div class="service-icon">
+                                        <i class="fas fa-ship"></i>
+                                    </div>
+                                    <h4>Hull Cleaning & Inspection</h4>
+                                    <div class="service-price">$250 – $500</div>
+                                    <div class="service-duration">
+                                        <i class="far fa-clock"></i> 1–3 hours
+                                    </div>
+                                    <p>Professional dive service for hull cleaning and inspection.</p>
+                                    <ul class="service-features">
+                                        <li>Underwater hull scrub</li>
+                                        <li>Propeller cleaning</li>
+                                        <li>Visual inspection for damage</li>
+                                        <li>Light growth removal</li>
+                                        <li>Certified diver, eco-safe methods</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Teak Service -->
+                                <div class="service-option" data-service="teak" data-price="200-500">
+                                    <div class="service-icon">
+                                        <i class="fas fa-tree"></i>
+                                    </div>
+                                    <h4>Teak Cleaning & Sealing</h4>
+                                    <div class="service-price">$200 – $500</div>
+                                    <div class="service-duration">
+                                        <i class="far fa-clock"></i> 2–5 hours
+                                    </div>
+                                    <p>Restore and protect your yacht's teak surfaces.</p>
+                                    <ul class="service-features">
+                                        <li>Deep teak cleaning</li>
+                                        <li>Brightening treatment</li>
+                                        <li>Sealer application</li>
+                                        <li>UV protection</li>
+                                        <li>Mildew & stain removal</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Monthly Plan -->
+                                <div class="service-option" data-service="monthly" data-price="600-1200">
+                                    <div class="service-badge">Best Value</div>
+                                    <div class="service-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <h4>Monthly Care Plan</h4>
+                                    <div class="service-price">$600 – $1,200/month</div>
+                                    <div class="service-duration">
+                                        <i class="far fa-clock"></i> Ongoing
+                                    </div>
+                                    <p>Comprehensive monthly maintenance package.</p>
+                                    <ul class="service-features">
+                                        <li>Weekly exterior wash</li>
+                                        <li>Bi-weekly interior tidy</li>
+                                        <li>Monthly teak treatment</li>
+                                        <li>Hull inspection every 3 months</li>
+                                        <li>Priority booking & 10% discount</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Captain Service -->
+                                <div class="service-option" data-service="captain" data-price="250-500">
+                                    <div class="service-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <h4>Captain Service</h4>
+                                    <div class="service-price">$250 – $500</div>
+                                    <div class="service-duration">
+                                        <i class="far fa-clock"></i> Varies
+                                    </div>
+                                    <p>Licensed captain for relocation or marina assistance.</p>
+                                    <ul class="service-features">
+                                        <li>Short-distance yacht relocation</li>
+                                        <li>Marina maneuver assistance</li>
+                                        <li>On-water supervision</li>
+                                        <li>Licensed & experienced captain</li>
+                                        <li>Local knowledge of Bahamas waters</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="booking-navigation">
+                            <div></div>
+                            <button class="btn btn-primary next-step" data-next="2">Continue to Date & Time</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Date & Time Selection -->
+                    <div class="booking-form-section" id="step2-content">
+                        <h3>Select Date & Time</h3>
+                        <p>Choose your preferred appointment date and time. We'll confirm availability within 24 hours.</p>
+                        
+                        <div class="datetime-selection">
+                            <div class="form-group">
+                                <label>Preferred Date</label>
+                                <div class="date-picker" id="datePicker">
+                                    <!-- Dates will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Preferred Time Slot</label>
+                                <div class="time-slots" id="timeSlots">
+                                    <!-- Time slots will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="marinaLocation">Marina / Location *</label>
+                                <select id="marinaLocation" class="form-control" required>
+                                    <option value="">Select your marina</option>
+                                    <option value="Nassau Yacht Haven">Nassau Yacht Haven</option>
+                                    <option value="Paradise Island Marina">Paradise Island Marina</option>
+                                    <option value="Lyford Cay Marina">Lyford Cay Marina</option>
+                                    <option value="Albany Marina">Albany Marina</option>
+                                    <option value="Coral Harbour Marina">Coral Harbour Marina</option>
+                                    <option value="Bayside Marina">Bayside Marina</option>
+                                    <option value="Other">Other Location</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" id="otherLocationGroup" style="display: none;">
+                                <label for="otherLocation">Please specify your location</label>
+                                <input type="text" id="otherLocation" class="form-control" placeholder="Enter marina name or address">
+                            </div>
+                        </div>
+                        
+                        <div class="booking-navigation">
+                            <button class="btn btn-outline prev-step" data-prev="1">
+                                <i class="fas fa-arrow-left"></i> Back to Services
+                            </button>
+                            <button class="btn btn-primary next-step" data-next="3">Continue to Details</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Contact & Confirmation -->
+                    <div class="booking-form-section" id="step3-content">
+                        <h3>Your Contact & Yacht Details</h3>
+                        <p>Tell us about your yacht and how we can reach you to confirm your booking.</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="clientName">Full Name *</label>
+                                <input type="text" id="clientName" class="form-control" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="clientEmail">Email Address *</label>
+                                <input type="email" id="clientEmail" class="form-control" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="clientPhone">Phone Number *</label>
+                                <input type="tel" id="clientPhone" class="form-control" placeholder="(242) 555-1234" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="yachtLength">Yacht Length (ft) *</label>
+                                <input type="text" id="yachtLength" class="form-control" placeholder="45" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="yachtName">Yacht Name</label>
+                                <input type="text" id="yachtName" class="form-control" placeholder="Sea Breeze">
+                            </div>
+                            <div class="form-group">
+                                <label for="yachtType">Yacht Type</label>
+                                <select id="yachtType" class="form-control">
+                                    <option value="">Select type</option>
+                                    <option value="Motor Yacht">Motor Yacht</option>
+                                    <option value="Sailing Yacht">Sailing Yacht</option>
+                                    <option value="Catamaran">Catamaran</option>
+                                    <option value="Center Console">Center Console</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="specialInstructions">Special Instructions or Requests</label>
+                            <textarea id="specialInstructions" class="form-control" placeholder="Any specific concerns, access instructions, or additional services needed..."></textarea>
+                        </div>
+                        
+                        <!-- Booking Summary -->
+                        <div class="booking-summary">
+                            <h4>Booking Summary</h4>
+                            <div class="summary-item">
+                                <span>Selected Service:</span>
+                                <span id="summaryService">Not selected</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Date:</span>
+                                <span id="summaryDate">Not selected</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Time:</span>
+                                <span id="summaryTime">Not selected</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Location:</span>
+                                <span id="summaryLocation">Not selected</span>
+                            </div>
+                            <div class="summary-total">
+                                <span>Estimated Price:</span>
+                                <span id="summaryPrice">Select service for quote</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" style="margin-top: 30px;">
+                            <label>
+                                <input type="checkbox" id="termsAgree" required>
+                                I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and understand this is a booking request that will be confirmed within 24 hours.
+                            </label>
+                        </div>
+                        
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label>
+                                <input type="checkbox" id="newsletterSignup" checked>
+                                Send me yacht care tips and exclusive offers (optional)
+                            </label>
+                        </div>
+                        
+                        <div class="booking-navigation">
+                            <button class="btn btn-outline prev-step" data-prev="2">
+                                <i class="fas fa-arrow-left"></i> Back to Date & Time
+                            </button>
+                            <button class="btn btn-primary" id="submitBooking">
+                                <i class="fas fa-paper-plane"></i> Submit Booking Request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee-section">
+        <div class="container">
+            <h2>Our Service Guarantee</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">When you book with Quality Yacht Services, you're choosing peace of mind and professional excellence.</p>
+            
+            <div class="guarantee-grid">
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>100% Satisfaction</h3>
+                    <p>If you're not completely satisfied with our service, we'll make it right or refund your money.</p>
+                </div>
+                
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>On-Time Service</h3>
+                    <p>We arrive on time as scheduled, or your next service is 20% off. Your time is valuable.</p>
+                </div>
+                
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Certified Professionals</h3>
+                    <p>All technicians are certified, licensed, and trained in the latest marine care techniques.</p>
+                </div>
+                
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Eco-Friendly Products</h3>
+                    <p>We use environmentally safe, biodegradable products to protect Bahamian waters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Booking FAQs</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Have questions about booking your yacht service? Find answers to common questions below.</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How soon can you service my yacht?</h3>
+                        <button class="faq-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We typically schedule appointments within 2-5 business days, depending on service type and availability. For urgent requests, call us directly at (242) 555-YACHT. Monthly plan clients receive priority scheduling.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need to be present during the service?</h3>
+                        <button class="faq-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, you don't need to be present. We work with marinas to access your yacht. We recommend providing access instructions in the special requests section of your booking. All our technicians are licensed, insured, and background-checked for your peace of mind.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How is pricing determined?</h3>
+                        <button class="faq-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pricing is based on yacht size, service type, and current condition. The ranges shown are estimates for yachts 30-60ft. We'll provide an exact quote after reviewing your yacht details. There are no hidden fees—the price we quote is the price you pay.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What happens after I submit my booking request?</h3>
+                        <button class="faq-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>1. You'll receive an email confirmation of your request<br>
+                        2. Our team will contact you within 24 hours to confirm details<br>
+                        3. We'll provide an exact quote based on your yacht specifics<br>
+                        4. Once confirmed, you'll receive a calendar invitation and service reminder<br>
+                        5. Our team arrives at your dock and completes the service</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is your cancellation policy?</h3>
+                        <button class="faq-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can cancel or reschedule up to 24 hours before your appointment without penalty. For cancellations within 24 hours, a $50 fee may apply. We understand emergencies happen—just contact us as soon as possible. Monthly plan clients enjoy flexible rescheduling.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <p>Still have questions? <a href="contact.html">Contact our team</a> for personalized assistance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="services.html#booking"><i class="fas fa-chevron-right"></i> Pricing</a>
+                    <a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a>
+                    <a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
+                    <a href="blog.html"><i class="fas fa-chevron-right"></i> Blog & Resources</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> (242) 555-YACHT</p>
+                    <p><i class="fas fa-envelope"></i> info@qualityyachtservices.com</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp Chat Available</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Nassau, The Bahamas</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 8am-6pm</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+                        <a href="#" style="color: white; font-size: 1.3rem;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 1.3rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 1.3rem;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p>Subscribe for yacht care tips:</p>
+                    <div style="margin-top: 15px;">
+                        <input type="email" placeholder="Email address" style="padding: 10px; width: 100%; border-radius: 4px; border: none;">
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">Subscribe</button>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ready to Book?</h3>
+                    <p>Schedule your yacht service online or contact us for a custom quote.</p>
+                    <a href="#booking-process" class="btn btn-primary" style="margin-top: 15px;">Book Now</a>
+                    <a href="tel:+12425559224" class="btn btn-outline" style="margin-top: 10px; color: white; border-color: white; display: block; text-align: center;">Call Now</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Quality Yacht Services. All rights reserved. | Nassau, Bahamas</p>
+                <p style="margin-top: 10px;"><a href="privacy-policy.html" style="color: rgba(255, 255, 255, 0.7);">Privacy Policy</a> | <a href="terms-of-service.html" style="color: rgba(255, 255, 255, 0.7);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Booking Data
+        let selectedService = '';
+        let selectedServicePrice = '';
+        let selectedDate = '';
+        let selectedTime = '';
+        let selectedLocation = '';
+        
+        // Service Selection
+        document.querySelectorAll('.service-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                document.querySelectorAll('.service-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Store selected service data
+                selectedService = this.querySelector('h4').textContent;
+                selectedServicePrice = this.getAttribute('data-price');
+                
+                // Update booking summary if visible
+                updateBookingSummary();
+            });
+        });
+        
+        // Generate dates for next 7 days
+        function generateDates() {
+            const datePicker = document.getElementById('datePicker');
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            
+            datePicker.innerHTML = '';
+            
+            for (let i = 1; i <= 7; i++) {
+                const date = new Date();
+                date.setDate(date.getDate() + i);
+                
+                const dayElement = document.createElement('div');
+                dayElement.className = 'date-option';
+                dayElement.innerHTML = `
+                    <div class="day-name">${days[date.getDay()]}</div>
+                    <div class="day-date">${months[date.getMonth()]} ${date.getDate()}</div>
+                `;
+                
+                // Format date for display
+                const displayDate = `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}`;
+                
+                dayElement.addEventListener('click', function() {
+                    // Remove selected class from all dates
+                    document.querySelectorAll('.date-option').forEach(d => {
+                        d.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked date
+                    this.classList.add('selected');
+                    
+                    // Store selected date
+                    selectedDate = displayDate;
+                    
+                    // Update booking summary
+                    updateBookingSummary();
+                });
+                
+                datePicker.appendChild(dayElement);
+            }
+        }
+        
+        // Generate time slots
+        function generateTimeSlots() {
+            const timeSlots = document.getElementById('timeSlots');
+            const times = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
+            
+            timeSlots.innerHTML = '';
+            
+            times.forEach(time => {
+                const timeElement = document.createElement('div');
+                timeElement.className = 'time-slot';
+                
+                // Format time for display
+                const hour = parseInt(time.split(':')[0]);
+                const ampm = hour >= 12 ? 'PM' : 'AM';
+                const displayHour = hour > 12 ? hour - 12 : hour;
+                const displayTime = `${displayHour}:00 ${ampm}`;
+                
+                timeElement.textContent = displayTime;
+                timeElement.setAttribute('data-time', time);
+                
+                timeElement.addEventListener('click', function() {
+                    // Remove selected class from all times
+                    document.querySelectorAll('.time-slot').forEach(t => {
+                        t.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked time
+                    this.classList.add('selected');
+                    
+                    // Store selected time
+                    selectedTime = displayTime;
+                    
+                    // Update booking summary
+                    updateBookingSummary();
+                });
+                
+                timeSlots.appendChild(timeElement);
+            });
+        }
+        
+        // Location selection
+        const marinaLocation = document.getElementById('marinaLocation');
+        const otherLocationGroup = document.getElementById('otherLocationGroup');
+        
+        marinaLocation.addEventListener('change', function() {
+            if (this.value === 'Other') {
+                otherLocationGroup.style.display = 'block';
+                selectedLocation = document.getElementById('otherLocation').value || 'Other Location';
+            } else {
+                otherLocationGroup.style.display = 'none';
+                selectedLocation = this.value;
+            }
+            updateBookingSummary();
+        });
+        
+        document.getElementById('otherLocation').addEventListener('input', function() {
+            selectedLocation = this.value;
+            updateBookingSummary();
+        });
+        
+        // Update booking summary
+        function updateBookingSummary() {
+            document.getElementById('summaryService').textContent = selectedService || 'Not selected';
+            document.getElementById('summaryDate').textContent = selectedDate || 'Not selected';
+            document.getElementById('summaryTime').textContent = selectedTime || 'Not selected';
+            document.getElementById('summaryLocation').textContent = selectedLocation || 'Not selected';
+            
+            if (selectedServicePrice) {
+                const priceRange = selectedServicePrice.split('-');
+                if (priceRange.length === 2) {
+                    document.getElementById('summaryPrice').textContent = `$${priceRange[0]} – $${priceRange[1]}`;
+                } else {
+                    document.getElementById('summaryPrice').textContent = `From $${selectedServicePrice}`;
+                }
+            } else {
+                document.getElementById('summaryPrice').textContent = 'Select service for quote';
+            }
+        }
+        
+        // Booking Steps Navigation
+        const steps = document.querySelectorAll('.step');
+        const stepContents = document.querySelectorAll('.booking-form-section');
+        
+        document.querySelectorAll('.next-step').forEach(button => {
+            button.addEventListener('click', function() {
+                const nextStep = parseInt(this.getAttribute('data-next'));
+                navigateToStep(nextStep);
+            });
+        });
+        
+        document.querySelectorAll('.prev-step').forEach(button => {
+            button.addEventListener('click', function() {
+                const prevStep = parseInt(this.getAttribute('data-prev'));
+                navigateToStep(prevStep);
+            });
+        });
+        
+        function navigateToStep(stepNumber) {
+            // Validate current step before proceeding
+            if (stepNumber === 2) {
+                if (!selectedService) {
+                    alert('Please select a service before continuing.');
+                    return;
+                }
+            }
+            
+            if (stepNumber === 3) {
+                if (!selectedDate || !selectedTime || !selectedLocation) {
+                    alert('Please select a date, time, and location before continuing.');
+                    return;
+                }
+            }
+            
+            // Update step indicators
+            steps.forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Mark previous steps as completed
+            for (let i = 1; i < stepNumber; i++) {
+                document.getElementById(`step${i}-indicator`).classList.add('completed');
+            }
+            
+            // Mark current step as active
+            document.getElementById(`step${stepNumber}-indicator`).classList.add('active');
+            
+            // Show corresponding content
+            stepContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            document.getElementById(`step${stepNumber}-content`).classList.add('active');
+            
+            // Scroll to top of booking container
+            document.querySelector('.booking-container').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+            
+            // Update booking summary in step 3
+            if (stepNumber === 3) {
+                updateBookingSummary();
+            }
+        }
+        
+        // Submit Booking
+        document.getElementById('submitBooking').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            const name = document.getElementById('clientName').value;
+            const email = document.getElementById('clientEmail').value;
+            const phone = document.getElementById('clientPhone').value;
+            const yachtLength = document.getElementById('yachtLength').value;
+            const termsAgree = document.getElementById('termsAgree').checked;
+            
+            if (!name || !email || !phone || !yachtLength) {
+                alert('Please fill in all required fields (marked with *).');
+                return;
+            }
+            
+            if (!termsAgree) {
+                alert('Please agree to the Terms of Service to continue.');
+                return;
+            }
+            
+            if (!selectedService) {
+                alert('Please select a service.');
+                navigateToStep(1);
+                return;
+            }
+            
+            // Show success message
+            alert(`Thank you ${name}! Your booking request for "${selectedService}" has been submitted. We'll contact you at ${email} within 24 hours to confirm details and provide an exact quote.`);
+            
+            // In a real application, this would submit to a server
+            // Reset form for demo purposes
+            setTimeout(() => {
+                resetBookingForm();
+                navigateToStep(1);
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 2000);
+        });
+        
+        function resetBookingForm() {
+            // Reset selections
+            selectedService = '';
+            selectedServicePrice = '';
+            selectedDate = '';
+            selectedTime = '';
+            selectedLocation = '';
+            
+            // Clear form fields
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientEmail').value = '';
+            document.getElementById('clientPhone').value = '';
+            document.getElementById('yachtLength').value = '';
+            document.getElementById('yachtName').value = '';
+            document.getElementById('yachtType').value = '';
+            document.getElementById('marinaLocation').value = '';
+            document.getElementById('otherLocation').value = '';
+            document.getElementById('specialInstructions').value = '';
+            document.getElementById('termsAgree').checked = false;
+            document.getElementById('newsletterSignup').checked = true;
+            
+            // Reset UI selections
+            document.querySelectorAll('.service-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.date-option').forEach(date => {
+                date.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.time-slot').forEach(time => {
+                time.classList.remove('selected');
+            });
+            
+            otherLocationGroup.style.display = 'none';
+            
+            // Reset step indicators
+            steps.forEach(step => {
+                step.classList.remove('active');
+                step.classList.remove('completed');
+            });
+            
+            document.getElementById('step1-indicator').classList.add('active');
+        }
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const answer = this.closest('.faq-item').querySelector('.faq-answer');
+                const icon = this.querySelector('i');
+                
+                answer.classList.toggle('active');
+                
+                if (answer.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize date and time pickers
+        generateDates();
+        generateTimeSlots();
+    </script>
+</body>
+</html>
